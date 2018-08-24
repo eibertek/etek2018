@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Appbar from '../../Library/AppBar';
+import { Header as headerData } from '../structure.json';
 import '../styles/Layout.scss';
 
 export default class Layout extends Component {
@@ -12,9 +14,7 @@ export default class Layout extends Component {
       const { Menu, Content } = this.props;
     return (
       <div>
-        <header> 
-            <div>ETEK WEB PAGE</div>
-        </header>
+        <Appbar {...headerData}/>
         <section>{Menu ? <Menu /> : null}</section>
         <section>
             <Content/>

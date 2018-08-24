@@ -1,0 +1,33 @@
+{
+  "Menu": [
+    {
+      "link":"http://aaaa.com",
+      "name":"main",
+      "label":"Inicio"
+    },
+    {
+      "link":"http://aaaa.com",
+      "name":"blog",
+      "label":"Blog"
+    },
+    {
+      "link":"http://aaaa.com",
+      "name":"projects",
+      "label":"Proyectos"
+    },
+    {
+      "link":"http://aaaa.com",
+      "name":"contact",
+      "label":"Quienes Somos"
+    }
+  ],
+  "Header": {
+    "label": "Eibertek Page",
+    "subtitle":"Your dreams, Our goal",
+    "image":{
+      "url":"/logo.png",
+      "position":"left",
+      "className":"header-logo"
+    }
+  }
+}

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
+import MenuComponent from '../../Library/Menu';
+import { Menu as menuData } from '../structure.json';
 
 export default class Menu extends Component {
   render() {
     return (
-      <nav>
-        <div>Inicio</div>
-        <div>Blog</div>
-        <div>Otros</div>
-      </nav>
+      <MenuComponent menuData={menuData} />
     )
   }
 }

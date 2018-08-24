@@ -29,6 +29,7 @@ const config = {
         }
       ]
     },
+    watch: true,
 };
 
 module.exports = config;
