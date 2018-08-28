@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var APIRoutes = require('./API/routes');
+var APIRoutes = require('./API');
 
 app.use('/scripts', express.static('build'));
 
