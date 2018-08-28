@@ -5,7 +5,7 @@ import { Menu as menuData } from '../structure.json';
 export default class Menu extends Component {
   render() {
     return (
-      <MenuComponent menuData={menuData} />
+      <MenuComponent menuData={menuData} {...this.props} />
     )
   }
 }

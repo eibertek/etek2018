@@ -18,12 +18,15 @@
     "url": "http://github.com/eibertek"
   },
   "dependencies": {
+    "@material-ui/icons": "^2.0.3",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
     "express": "^4.16.3",
+    "i18n": "^0.8.3",
     "node-sass": "^4.9.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-internationalization": "^1.1.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -42,6 +45,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "file-loader": "^2.0.0",
+    "url-loader": "^1.1.1",
     "webpack-command": "^0.4.1"
   },
   "babel": {

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Switch, Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
-import Layout from './WebPage/Components/Layout';
-import MenuComponent from './WebPage/Components/Menu';
+import { InternationalizationProvider, internationalize } from 'react-internationalization';
+import * as languages from './locales';
 import Routes from './routes';
 /* hay que hacer una pagina web con un header, con un titulo una imagen
 agregar un menu que pueda ser configurado desde afuera. empecemos con un js
@@ -13,13 +11,13 @@ agregar informacion que peuda ser proveeida desde afuera tambien.
 - Ver que componentes requiero
 - Crear estructura del header
 */
+const InternationalizeApp = internationalize(Routes);
 class Index extends Component {
     render() {
         return (
-           <Layout 
-           Menu={MenuComponent}
-           Content={Routes}
-           />
+          <InternationalizationProvider defaultLanguage="en" languages={languages}>
+            <InternationalizeApp />
+          </InternationalizationProvider>
         );
     }
 }

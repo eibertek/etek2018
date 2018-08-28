@@ -13,11 +13,11 @@ const styles = theme => ({
 });
 
 function TextButtons(props) {
-  const { classes, menuData } = props;
+  const { classes, menuData, history } = props;
   return (
     <div>
-      {menuData.map( each => 
-        <Button color="primary" className={classes.button}>
+      {menuData.map( (each, idx) => 
+        <Button key={idx} color="primary" className={classes.button} onClick={e => history.push(each.link)} >
           {each.label}
         </Button>)}      
     </div>

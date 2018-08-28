@@ -1,22 +1,22 @@
 {
   "Menu": [
     {
-      "link":"http://aaaa.com",
+      "link":"/",
       "name":"main",
       "label":"Inicio"
     },
     {
-      "link":"http://aaaa.com",
+      "link":"/blog",
       "name":"blog",
       "label":"Blog"
     },
     {
-      "link":"http://aaaa.com",
+      "link":"/projects",
       "name":"projects",
       "label":"Proyectos"
     },
     {
-      "link":"http://aaaa.com",
+      "link":"/whoarewe",
       "name":"contact",
       "label":"Quienes Somos"
     }
@@ -29,5 +29,26 @@
       "position":"left",
       "className":"header-logo"
     }
+  },
+  "Main":{
+    "title":"",
+    "subtitle":"",
+    "body":""
+  },
+  "/blog":{
+    "title":"This is a blog",
+    "subtitle":"Not Yet",
+    "body":"Its a summon of something blog look a like..."
+  },
+  "/projects":{
+    "title":"Projects",
+    "subtitle":"Here will be a lot of projects",
+    "body":"I hope..."
+  },
+  "/whoarewe":{
+    "title":"We, we are",
+    "subtitle":"not a lot of people actually...",
+    "body":"Its just me, Mario."
   }
+
 }

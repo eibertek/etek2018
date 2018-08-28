@@ -8,8 +8,14 @@ header {
     height:3em;
     font-size:3em;
     background-color: #CCCCCC;
-    div {
+    .iso-logo {
+        background-image: url('../../assets/etklogo2018.png');
+        background-repeat: no-repeat;
+        background-size: 2rem 3rem;
         margin: auto;
-        width: 25%;    
+        padding:0 3rem;
+        width:"100px";
     }
 }
+
+

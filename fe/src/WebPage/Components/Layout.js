@@ -6,18 +6,17 @@ import '../styles/Layout.scss';
 
 export default class Layout extends Component {
   static propTypes = {
-    Menu: PropTypes.node,
-    Content: PropTypes.node,
+    Menu: PropTypes.func,
+    Content: PropTypes.func,
   }
 
   render() {
-      const { Menu, Content } = this.props;
+      const { Menu, Content, children, ...otherProps } = this.props;
     return (
       <div>
-        <Appbar {...headerData}/>
-        <section>{Menu ? <Menu /> : null}</section>
+        <Appbar {...headerData} MenuOpts={Menu ? <Menu {...otherProps} /> : null}/>
         <section>
-            <Content/>
+            {children}
         </section>
       </div>
     )
