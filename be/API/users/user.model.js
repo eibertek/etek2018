@@ -8,7 +8,7 @@ mongoose.connect(connString, { useNewUrlParser: true });
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    userId:String,
+    user_id: Schema.Types.ObjectId,
     name: String,
     lastName: String,
     mail: String,
@@ -21,7 +21,7 @@ const userSchema = new Schema({
 });
 
 const tokenSchema = new Schema({
-    userId: String,
+    user_id: String,
     token: String,
     expiresOn: Date,
 });
