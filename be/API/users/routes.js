@@ -1,37 +1,58 @@
 var express = require('express');
 var router = express.Router();
+const models = require('./user.model');
 
-//token validation
-router.all('*', (req, res, next) => {
-  //verify token user req.headers
-  console.log(req.headers);
-  if(req.headers.token !== 'misuperToken') return res.send(401, 'INVALID TOKEN');
-  return next();
+
+// Add user
+router.post('/login', function (req, res, next) {
+  const { username, password } = req.params;
+  models.userModel.login(username, password);
+  return res.send(200, 'ok');
 });
 
 // Add user
 router.post('/register', function (req, res, next) {
-    console.log('ID:', req.params);
-    next();
-  }, function (req, res, next) {
-    res.send('User Info');
+  const { name, lastname, mail, username, password } = req.body;
+  const query = models.userModel.createUser({name, lastname, mail, username, password});
+  query.then((err, save) => {
+    console.log(err, save);
+    return res.send(200, 'ok');
   });
+});
+
+//token validation
+router.all('*', (req, res, next) => {
+  //verify token user req.headers
+  const { userid, tokenid} = req.headers;
+  const query = models.tokenModel.validateToken(userid, tokenid);
+  query.then(resolve => {
+    console.log(resolve.length);
+    if(resolve && resolve.length < 1) return res.status(401).send('INVALID TOKEN');
+    next();
+  }, rej => {
+    return res.send(401, 'INVALID TOKEN');
+  });  
+});
 
 // Edit user
-// delete user
-// ban user
-// updateToken
-// Validate  
-router.get('/validate', function (req, res, next) {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({ blog: [
-      {
-        id:1,
-        name:'Blog',
-        title:'My blog',
-        body:'<h2>My user blog</h2>'
-      }
-    ] }));
+router.get('/edit', function (req, res, next) {
+  return res.send(200, 'ok');  
 });
+
+// delete user
+router.get('/remove', function (req, res, next) {
+  return res.send(200, 'ok');  
+});
+
+// ban user
+router.get('/ban', function (req, res, next) {
+  return res.send(200, 'ok');
+});
+
+// validateMail
+router.get('/validate/mail', function (req, res, next) {
+  return res.send(200, 'ok');
+});
+
 
 module.exports = router;
