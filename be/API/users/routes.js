@@ -5,18 +5,47 @@ const models = require('./user.model');
 
 // Add user
 router.post('/login', function (req, res, next) {
-  const { username, password } = req.params;
-  models.userModel.login(username, password);
-  return res.status(200).send(200, 'ok');
+  const { username, password } = req.body;
+  const query = models.userModel.login(username, password);
+  query.then(success => {
+    return res.status(200).send(JSON.stringify(success));
+  })
 });
 
 // Add user
 router.post('/register', function (req, res, next) {
   const { name, lastname, mail, username, password } = req.body;
+  console.log(name, lastname, username, password);
+  if(!name || !lastname || !mail || !username || !password) {
+    return res.status(500).send(JSON.stringify({
+      error: 'There are empty values on the form'
+    }));
+  }
+  if(name === "" || lastname === "" || mail === "" || username === "" || password === "" ) {
+    console.log(name, lastname, username, password);
+    return res.status(500).send(JSON.stringify({
+      error: 'There are empty values on the form'
+    }));
+  };
+
   const query = models.userModel.createUser({name, lastname, mail, username, password});
   query.then(success => {
-    return res.status(200).send(JSON.stringify(success));
+    const tempToken = success.saveTokenResult.tempToken;
+    return res.status(200).send(JSON.stringify({
+      tempToken
+    }));
   })
+});
+
+// validateMail
+router.get('/validate/mail/:token', function (req, res, next) {
+  const tokenId = req.params.token;
+  const query = models.userModel.validateMail(tokenId);
+  query.then(response => {
+    if(response.error) 
+      return res.status(500).send(JSON.stringify({ error: response.error }));
+    return res.status(500).send(JSON.stringify(response.error));
+  }).catch(error => console.log(error));
 });
 
 //token validation
@@ -25,7 +54,6 @@ router.all('*', (req, res, next) => {
   const { userid, tokenid} = req.headers;
   const query = models.tokenModel.validateToken(userid, tokenid);
   query.then(resolve => {
-    console.log(resolve.length);
     if(resolve && resolve.length < 1) return res.status(401).send('INVALID TOKEN');
     next();
   }, rej => {
@@ -48,10 +76,7 @@ router.get('/ban', function (req, res, next) {
   return res.send(200, 'ok');
 });
 
-// validateMail
-router.get('/validate/mail', function (req, res, next) {
-  return res.send(200, 'ok');
-});
+
 
 
 module.exports = router;
