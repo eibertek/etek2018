@@ -80,4 +80,7 @@ CommentModel.saveComment = ( data ) => {
   saveObject.save((err, status) => err ? console.log('it was an error on save comment', err) : console.log('ok', status));
 };
 
-module.exports = BlogModel;  
+module.exports = {
+  BlogModel,
+  CommentModel
+};  

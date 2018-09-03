@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var BlogModel = require('./blog.model');
+const { BlogModel } = require('./blog.model');
 
 //token validation
 router.all('*', (req, res, next) => {

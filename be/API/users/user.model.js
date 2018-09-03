@@ -8,7 +8,6 @@ mongoose.connect(connString, { useNewUrlParser: true });
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    user_id: Schema.Types.ObjectId,
     name: String,
     lastName: String,
     mail: String,
@@ -22,6 +21,7 @@ const userSchema = new Schema({
 
 const tokenSchema = new Schema({
     user_id: String,
+    tempToken: String,
     token: String,
     expiresOn: Date,
 });
@@ -37,7 +37,32 @@ userModel.login = function(userName, password) {
     return userModel.find({ userName, password }).populate('tokens users').exec();
 }
 
-userModel.createUser = function({ name, lastname, mail, username, password}) {
+userModel.createUser = async function({ name, lastname, mail, username, password}) {
+    const saveUser = new userModel({
+        name,
+        lastname,
+        mail,
+        username,
+        password,
+        validation_status: 'pending',
+        tokens: null,        
+    });
+    const userSaveResult = await saveUser.save();
+
+    const savetoken = new tokenModel({
+        user_id:userSaveResult._id,
+        tempToken: uuidv4(),        
+    });    
+
+    const saveTokenResult = await savetoken.save();
+
+    return {
+        userSaveResult,
+        saveTokenResult
+    };
+}
+
+userModel.validateMail = async function({ name, lastname, mail, username, password}) {
     const saveme = new userModel({
         userId:uuidv4(),
         name,
@@ -48,7 +73,7 @@ userModel.createUser = function({ name, lastname, mail, username, password}) {
         validation_status: 'pending',
         tokens: null,        
     });
-    return saveme.save();
+    await saveme.save();
 }
 
 module.exports = {

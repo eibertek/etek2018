@@ -7,17 +7,16 @@ const models = require('./user.model');
 router.post('/login', function (req, res, next) {
   const { username, password } = req.params;
   models.userModel.login(username, password);
-  return res.send(200, 'ok');
+  return res.status(200).send(200, 'ok');
 });
 
 // Add user
 router.post('/register', function (req, res, next) {
   const { name, lastname, mail, username, password } = req.body;
   const query = models.userModel.createUser({name, lastname, mail, username, password});
-  query.then((err, save) => {
-    console.log(err, save);
-    return res.send(200, 'ok');
-  });
+  query.then(success => {
+    return res.status(200).send(JSON.stringify(success));
+  })
 });
 
 //token validation
