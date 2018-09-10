@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Appbar from '../../Library/AppBar';
 import { Header as headerData } from '../structure.json';
+import Login from '../../User/Components/Login.component';
 import '../styles/Layout.scss';
 
 export default class Layout extends Component {
@@ -11,10 +12,11 @@ export default class Layout extends Component {
   }
 
   render() {
-      const { Menu, Content, children, ...otherProps } = this.props;
+      const { Menu, Content, children, location, ...otherProps } = this.props;
     return (
       <div>
         <Appbar {...headerData} MenuOpts={Menu ? <Menu {...otherProps} /> : null}/>
+        <Login location={location} />
         <section>
             {children}
         </section>

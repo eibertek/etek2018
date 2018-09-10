@@ -1,10 +1,7 @@
-import enLang from './en'
-import esLang from './es-la';
+import en from './en'
+import es from './es-ES';
  
-export function en() {
-  return enLang
-}
-
-export function es() {
-    return esLang;
+export default {
+    en,
+    es,
   }

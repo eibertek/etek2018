@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-
-const styles = theme => ({});
   
-  class TextInput extends Component {
+class TextInput extends Component {
 
     state = {
         value: '',
@@ -17,7 +14,7 @@ const styles = theme => ({});
     }
 
     render() {
-        const { id, label, className, value, onChange, margin, ...otherProps } = this.props;
+        const { id, label, className, value, onChange, disableUnderline, margin, ...otherProps } = this.props;
           return (
             <TextField
             id={id}
@@ -26,10 +23,22 @@ const styles = theme => ({});
             value={value}
             onChange={onChange || this.handleChange}
             margin={margin}
+            classes={{
+                root:'root-css',
+            }}                
+            InputProps={{
+                disableUnderline:!!disableUnderline,
+                className:'', 
+            }}
+            InputLabelProps={{
+                classes:{
+                    shrink:"shrink-label"
+                }
+            }}
             {...otherProps}
           />
           );
     }
   }
   
-  export default withStyles(styles)(TextInput);
+  export default TextInput;

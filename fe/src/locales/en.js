@@ -1,7 +1,8 @@
-const enLang = {
-    common: {
-      welcome: 'Hello {{name}}, you have {{count}} new {{messages}}!'
-    }
-  }
-   
-  export default enLang
+export default {
+  translations: {
+    "test":'TEST TEST TEST',
+    "username.label":'User Name:',
+    "name.label":'Name:',
+    "mail.label":'Email:',
+  },
+}

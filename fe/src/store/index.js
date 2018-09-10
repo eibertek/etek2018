@@ -7,7 +7,7 @@ import reducer from './reducer';
 import userReducer from '../User/Redux/user.reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const sagaMiddleware = createSagaMiddleware();
+export const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   combineReducers({

@@ -34,3 +34,38 @@ header {
 .register-button {
     margin: 40px;
 }
+
+.login-input {
+    .root-css{
+        background-color: #CCC;
+        border-radius: 10px;
+        text-decoration: none;
+        margin-bottom:10px;
+        border: 1px solid #aaa;
+    }
+    input, label {
+        padding: 0 10px 10px 10px;
+        top:-11px;
+    }
+    .shrink-label {
+        top:0px;
+    }
+}
+
+.login-button {
+ //   margin: 40px;
+    .root-css {
+        color:white;
+        background-color:#aaa;
+        border-color: #ccc;
+        &:hover {
+            border-color: #ccc;
+        }
+    }
+    .label-css {
+
+    }
+    .outlined-css {
+
+    }
+}

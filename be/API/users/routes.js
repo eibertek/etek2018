@@ -42,10 +42,14 @@ router.get('/validate/mail/:token', function (req, res, next) {
   const tokenId = req.params.token;
   const query = models.userModel.validateMail(tokenId);
   query.then(response => {
-    if(response.error) 
-      return res.status(500).send(JSON.stringify({ error: response.error }));
-    return res.status(500).send(JSON.stringify(response.error));
-  }).catch(error => console.log(error));
+    console.log(response);
+    if(response.error){
+      return res.status(400).send(JSON.stringify({ error: response.error }));
+    } 
+    return res.status(200).send(JSON.stringify(response));
+  }).catch(error => {
+    return res.status(500).send(JSON.stringify(error));
+  });
 });
 
 //token validation

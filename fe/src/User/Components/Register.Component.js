@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect }  from 'react-redux';
+import { translate, Trans } from 'react-i18next';
 import * as actions from '../Redux/user.actions';
 import TextBox from '../../library/TextBox';
-import Button from '@material-ui/core/Button';
+import Button from '../../library/Button';
 
 export class RegisterComponent extends Component {
   state = {
@@ -22,21 +23,20 @@ export class RegisterComponent extends Component {
         placeholder,
         helperText
     });
-    const { error, registerData } = this.props;
-    console.log(registerData);
+    const { error, registerData, t } = this.props;
     if(registerData) return <div>Se ha registrado correctamente, se le envio un mail para validar al usuario. Link: {registerData.tempToken}</div>;
     return (
       <div className="register-user-form">
         <h2>Register User:</h2>
         {error ? <span>{error.error}</span> : null }
         <section>
-            <TextBox id="name" className="register-input" name="name" label={'Name:'} onChange={this.onChange('name')} {...commonProps('Name', 'Enter a valid name')}/>
+            <TextBox id="name" className="register-input" name="name" label={t('name.label')} onChange={this.onChange('name')} {...commonProps('Name', 'Enter a valid name')}/>
         </section>
         <section>
             <TextBox id="lastname" className="register-input" name="lastname" label={'Last Name:'} onChange={this.onChange('lastname')} {...commonProps('LastName', '')} />
         </section>
         <section>
-            <TextBox id="username" className="register-input" name="username" label={'User Name:'} onChange={this.onChange('username')} {...commonProps('UserName', 'Could be anything alphanumeric')} />
+            <TextBox id="username" className="register-input" name="username" label={t('username.label')} onChange={this.onChange('username')} {...commonProps('UserName', 'Could be anything alphanumeric')} />
         </section>
         <section>
             <TextBox id="mail" className="register-input" name="mail" label={'Mail:'} type="email" onChange={this.onChange('mail')} {...commonProps('mail', 'has to be mail')} />
@@ -45,8 +45,13 @@ export class RegisterComponent extends Component {
             <TextBox id="password" className="register-input" name="password"  label={'Password:'} onChange={this.onChange('password')} type="password" {...commonProps('Password', 'Password has to be complex, with number, letters and an special char. its for your own good :)')} />
         </section>
         <section>
-            <Button className="register-button" variant="outlined" color="primary" 
-                    onClick={(evt) => this.props.saveUser(this.state)}>Click here to save</Button>
+            <Button 
+                className="register-button" 
+                variant="outlined" 
+                color="primary" 
+                onClick={(evt) => this.props.saveUser(this.state)}>
+                Click here to save
+            </Button>
         </section>
       </div>
     )
@@ -63,4 +68,6 @@ const mapStateToProps = ({ user }) => {
 const mapDisptachToProps = dispatch => ({
     saveUser: payload => dispatch(actions.saveUserPending(payload)),
 })
-export default connect(mapStateToProps, mapDisptachToProps)(RegisterComponent);
+const ConnectedComponent = connect(mapStateToProps, mapDisptachToProps)(RegisterComponent);
+
+export default translate('translations')(ConnectedComponent);

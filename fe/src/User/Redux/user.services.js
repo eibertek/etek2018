@@ -13,6 +13,7 @@ export const validateUser = (token) => {
   return axios.get(HOST+API+GET_USER_VALIDATE_MAIL+'/'+token );
 }
 
-export const loginUser = (payload) => {
-  return axios({}).post(HOST+API+POST_USER_LOGIN, payload);
+export const loginUser = (username, password) => {
+  console.log(username, password);
+  return axios.post(HOST+API+POST_USER_LOGIN, { username, password });
 }

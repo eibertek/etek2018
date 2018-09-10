@@ -84,7 +84,7 @@ userModel.validateMail = async function(tokenId) {
         error:'Token doesnt exist',        
     }; 
     const userData = await userModel.findOneAndUpdate({_id: tokenData.user_id },{ validation_status:"ready"}).exec();
-    await tokenModel.findOneAndRemove({tempToken: tokenId}).exec();
+    const removeToken = await tokenModel.findOneAndRemove({tempToken: tokenId}).exec();
     return userData;
 }
 
