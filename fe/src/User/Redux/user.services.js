@@ -14,6 +14,5 @@ export const validateUser = (token) => {
 }
 
 export const loginUser = (username, password) => {
-  console.log(username, password);
   return axios.post(HOST+API+POST_USER_LOGIN, { username, password });
 }

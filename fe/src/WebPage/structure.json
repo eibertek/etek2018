@@ -30,10 +30,10 @@
       "className":"header-logo"
     }
   },
-  "Main":{
-    "title":"",
-    "subtitle":"",
-    "body":""
+  "/":{
+    "title":"Bienvenido a la pagina de Mariano Eiberman",
+    "subtitle":"Aca iria un blog.",
+    "body":"PLaceholder de blog :D"
   },
   "/blog":{
     "title":"This is a blog",
@@ -49,6 +49,16 @@
     "title":"We, we are",
     "subtitle":"not a lot of people actually...",
     "body":"Its just me, Mario."
+  },
+  "/portal":{
+    "component":"portal",
+    "title":"We, we are",
+    "subtitle":"not a lot of people actually...",
+    "body":"Its just me, Mario."
+  },  
+  "notfound":{
+    "title":"Page not found",
+    "subtitle":"",
+    "body":"please try to go back or look another page..."
   }
-
 }

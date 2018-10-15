@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect }  from 'react-redux';
 import * as actions from '../Redux/user.actions';
 import TextBox from '../../library/TextBox';
@@ -17,7 +17,7 @@ export class Login extends Component {
     if(pathname === '/user/register') return null;
     if(loginStatus === 'SUCCESS') return null;
     return (
-      <Fragment>
+      <div className='login-form'>
         <section>{error ? <span>{error.error}</span> : null}</section>  
         <section className="login-input">
             <TextBox 
@@ -36,7 +36,7 @@ export class Login extends Component {
                 label={'Password'} 
                 onChange={this.onChange('password')} 
                 type="password"
-                disableUnderline={true}
+                disableUnderline={true}                  
             />
         </section>
         <section className="login-button" >
@@ -46,7 +46,7 @@ export class Login extends Component {
                 onClick={(evt) => this.props.login(username, password )} 
             >Submit</Button>
         </section>        
-      </Fragment>
+      </div>
     )
   }
 }

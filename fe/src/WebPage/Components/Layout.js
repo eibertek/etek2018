@@ -11,12 +11,28 @@ export default class Layout extends Component {
     Content: PropTypes.func,
   }
 
+  state={
+    menuIsOpen: false,
+    loginDrawer: false,
+  }
+  MenuHandler = (drawer, status) => {
+    this.setState({ [drawer]: status, });    
+  }
+
   render() {
-      const { Menu, Content, children, location, ...otherProps } = this.props;
+      const { Menu, Content, children, location, loginStatus, ...otherProps } = this.props;
+      const { menuIsOpen, loginDrawer } = this.state;
     return (
       <div>
-        <Appbar {...headerData} MenuOpts={Menu ? <Menu {...otherProps} /> : null}/>
-        <Login location={location} />
+        <Appbar 
+          {...headerData} 
+          MenuOpts={Menu ? <Menu {...otherProps} /> : null} 
+          Login={<Login location={location} />}
+          menuIsOpen={menuIsOpen}
+          menuHandler={this.MenuHandler}
+          loginDrawer={loginDrawer} 
+          loginStatus={loginStatus} 
+        />
         <section>
             {children}
         </section>

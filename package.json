@@ -8,8 +8,9 @@
     "server": "nodemon ./be/index",
     "build": "webpack",
     "build:prod": "webpack -p",
-    "dev:watch": "webpack --config ./fe/config/webpack.config.js --mode development --watch",
-    "prod:watch": "webpack ./fe/config/webpack.config.js --mode production --watch"
+    "dev:watch": "npm run dev:watch --prefix fe",
+    "prod:watch": "webpack ./fe/config/webpack.config.js --mode production --watch",
+    "start": "run-p server dev:watch"
   },
   "author": "Mariano Eiberman",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "express": "^4.16.3",
     "mongoose": "^5.2.10",
     "nodemon": "^1.18.3",
+    "npm-run-all": "^4.1.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
@@ -28,6 +30,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
+    "rss-parser": "^3.5.2",
     "typescript": "^3.0.1",
     "uuid": "^3.3.2",
     "webpack": "^4.16.5"

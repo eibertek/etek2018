@@ -34,17 +34,29 @@ header {
 .register-button {
     margin: 40px;
 }
-
+.login-form{
+    position:absolute;
+    right:30px;
+    background-color: #dcdcdc;
+    border-radius: 5%;
+    margin:auto;
+    padding: 5px 15px;
+}
 .login-input {
     .root-css{
-        background-color: #CCC;
-        border-radius: 10px;
+        background-color: #DADADA;
+        border-radius: 0px;
         text-decoration: none;
-        margin-bottom:10px;
+        margin-bottom:5px;
+        font-size:10px;
         border: 1px solid #aaa;
+        width:100px;
+    }
+    .formControl-css {
+        font-size:10px;
     }
     input, label {
-        padding: 0 10px 10px 10px;
+        padding: 0 2px 2px 2px;
         top:-11px;
     }
     .shrink-label {
@@ -58,14 +70,46 @@ header {
         color:white;
         background-color:#aaa;
         border-color: #ccc;
+        width: 100px;
+        min-height: 20px;
+        font-size: 10px;
         &:hover {
             border-color: #ccc;
-        }
+        };
     }
     .label-css {
 
     }
     .outlined-css {
 
+    }
+}
+
+.paper-width-sm {
+    height:200px;
+    .login-form{
+        position:unset;
+        margin:0px 10px;
+    }
+}
+
+.news {
+    img { 
+        width:150px;
+        height: 150px;
+        float:left;
+    }
+    figCaption {
+        font-size: 9px;
+    }
+    p {
+        font-size:10px;
+        display: block; /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 1em;
+        line-height: 1em;
+        float:right;
     }
 }

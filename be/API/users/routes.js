@@ -9,6 +9,8 @@ router.post('/login', function (req, res, next) {
   const query = models.userModel.login(username, password);
   query.then(success => {
     return res.status(200).send(JSON.stringify(success));
+  }, (error)=>{
+    return res.status(401).send(JSON.stringify(error));
   })
 });
 

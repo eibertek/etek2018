@@ -11,13 +11,8 @@ class Routes extends Component {
         return (
             <BrowserRouter>
             <Switch>
-                <Route path='/blog' component={props => <WebPage {...props}><Main data={structure[props.match.path] || {}}/></WebPage>} />
-                <Route path='/projects' component={props => <WebPage {...props}><Main data={structure[props.match.path] || {}} /></WebPage>} />
-                <Route path='/whoarewe' component={props => <WebPage {...props}><Main data={structure[props.match.path] || {}} /></WebPage>} />
-                <Route path='/private' component={props => <WebPage {...props}><Main data={structure[props.match.path] || {}} /></WebPage>} />
                 <Route path='/user' component={props => <WebPage {...props}><Users {...props} /></WebPage>} />
-                <Route exact path='/' component={props => <WebPage {...props}><Main data={structure[props.match.path] || {}} /></WebPage>} />
-                <Route exact path='*' component={props => <WebPage {...props}><Main>NOT FOUND PAGE</Main></WebPage>} />
+                <Route exact path='*' component={props => <WebPage {...props}><Main data={structure[props.match.url] || structure['notfound']} /></WebPage>} />
             </Switch>
         </BrowserRouter>
         );

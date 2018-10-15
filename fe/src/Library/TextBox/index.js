@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
   
 class TextInput extends Component {
@@ -25,6 +24,8 @@ class TextInput extends Component {
             margin={margin}
             classes={{
                 root:'root-css',
+              //  label:'label-css',
+             //   formControl: 'formControl-css',
             }}                
             InputProps={{
                 disableUnderline:!!disableUnderline,
@@ -32,7 +33,8 @@ class TextInput extends Component {
             }}
             InputLabelProps={{
                 classes:{
-                    shrink:"shrink-label"
+                    shrink:"shrink-label",
+                    formControl: 'formControl-css',
                 }
             }}
             {...otherProps}
